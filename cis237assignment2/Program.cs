@@ -1,4 +1,12 @@
-﻿using System;
+﻿//Morgan Boon
+//CIS237
+//Assignment 2
+//Due 10/04/2016
+
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +54,7 @@ namespace cis237assignment2
             /// </summary>
             MazeSolver mazeSolver = new MazeSolver();
 
+            
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1);
 
@@ -56,29 +65,35 @@ namespace cis237assignment2
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
-
+            
         }
 
         /// <summary>
         /// This method will take in a 2 dimensional char array and return
         /// a char array maze that is flipped along the diagonal, or in mathematical
         /// terms, transposed.
-        /// ie. if the array looks like 1, 2, 3
-        ///                             4, 5, 6
-        ///                             7, 8, 9
-        /// The returned result will be:
-        ///                             1, 4, 7
-        ///                             2, 5, 8
-        ///                             3, 6, 9
-        /// The current return statement is just a placeholder so the program
-        /// doesn't complain about no return value.
+        ///
         /// </summary>
         /// <param name="mazeToTranspose"></param>
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
-            //Write code her to create a transposed maze.
-            return new char[1, 1];
+            //Creates maze to return 
+            char[,] transposedMaze = new char[mazeToTranspose.GetLength(0), mazeToTranspose.GetLength(1)];
+
+            //Loops through each column
+            for (int i = 0; i < mazeToTranspose.GetLength(0); i++)
+            {
+                //Loops through each row
+                for (int j = 0; j < mazeToTranspose.GetLength(1); j++)
+                {
+                    //Copies each char to its transposed location
+                    transposedMaze[i, j] = mazeToTranspose[j, i];
+                }
+            }
+
+            //Returns transposed maze
+            return transposedMaze;
         }
     }
 }
